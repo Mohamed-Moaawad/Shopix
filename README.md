@@ -13,7 +13,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 2. Start the app
 
    ```bash
-    npx expo start
+    npm start
    ```
 
 In the output, you'll find options to open the app in a
@@ -48,3 +48,9 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+  
+  <hr />
+<img src="https://i.postimg.cc/fyynPMC7/photo-12-2024-10-08-03-49-46.jpg" /> <img src="https://i.postimg.cc/tRvHxVRB/photo-14-2024-10-08-03-49-46.jpg" /> <img src="https://i.postimg.cc/cHXGTvR4/photo-11-2024-10-08-03-49-46.jpg" /> 
+<img src="https://i.postimg.cc/9Fv5x57T/photo-16-2024-10-08-03-49-46.jpg" /> <img src="https://i.postimg.cc/283rc7Xp/photo-4-2024-10-08-03-49-46.jpg" />  <img src="https://i.postimg.cc/pLFxxXHq/photo-7-2024-10-08-03-49-46.jpg" />
+<img src="https://i.postimg.cc/pdMvdbVx/photo-8-2024-10-08-03-49-46.jpg" />
