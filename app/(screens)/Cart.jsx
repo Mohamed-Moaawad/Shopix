@@ -25,11 +25,6 @@ const Cart = () => {
     
     
     
-    useEffect(()=>{
-        if(!user && !loadingCart){
-            router.replace('Login')
-        }
-    },[user, loadingCart])
     
         // Get total price
         const totalPrice = data?.docs?.reduce((acc, current)=>{

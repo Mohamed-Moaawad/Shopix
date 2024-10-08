@@ -1,4 +1,4 @@
-import { Platform, StyleSheet, Text, View } from 'react-native'
+import { FlatList, Platform, StyleSheet, Text, View } from 'react-native'
 import React, { Suspense, useState } from 'react'
 // react-native-responsive-screen
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
@@ -49,10 +49,17 @@ const Shop = () => {
             {/* start products */}
             <View style={styles.containerBox}>
                 <Suspense fallback={<>
-                        <Skeleton />
-                        <Skeleton />
-                        <Skeleton />
-                        <Skeleton />
+                    <FlatList
+                        data={[1,2,3,4,5,6]}
+                        numColumns={2}
+                        keyExtractor={(item)=> item}
+                        contentContainerStyle={{width:'100%', padding: wp(1),paddingBottom: hp(28)}}
+                        columnWrapperStyle={{justifyContent:'space-between'}}
+                        showsVerticalScrollIndicator={false}
+                        renderItem={({item})=>(
+                            <Skeleton  />
+                        )}
+                    />
                     </>} 
                 >
                     <LazyComponentAllProducts data={data} loadingData={loadingData}  />

@@ -35,7 +35,7 @@ const NavigationBar = () => {
                         {/* <Text style={styles.text}>shop</Text> */}
                     </TouchableOpacity>
                     
-                    <TouchableOpacity onPress={()=> router.push('Wishlist')}>
+                    <TouchableOpacity onPress={()=> router.push('Login')}>
                         <Icon name="hearto" size={23} color={themes.colors.textDark} />
                         {/* <Text style={styles.text}>favorite</Text> */}
                     </TouchableOpacity>
@@ -47,12 +47,12 @@ const NavigationBar = () => {
                         </TouchableOpacity>
                     </View>
 
-                    <TouchableOpacity onPress={()=> router.push('Cart')}>
+                    <TouchableOpacity onPress={()=> router.push('Login')}>
                         <Icon name="shoppingcart" size={23} color={themes.colors.textDark} />
                         {/* <Text style={styles.text}>cart</Text> */}
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={()=> router.push('Profile')}>
+                    <TouchableOpacity onPress={()=> router.push('Login')}>
                         <Icon name="user" size={23} color={themes.colors.textDark} />
                         {/* <Text style={styles.text}>profile</Text> */}
                     </TouchableOpacity>

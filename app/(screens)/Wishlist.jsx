@@ -24,13 +24,6 @@ const Wishlist = () => {
     )
 
 
-
-    useEffect(()=>{
-        if(!user && !loadingFav){
-            router.replace('Login')
-        }
-    },[user, loadingFav])
-
     if(user){
         return (
             <View style={styles.container}>

@@ -19,12 +19,14 @@ const HomeHeader = () => {
 
             <View style={styles.userInfo}>
                 <TouchableOpacity>
-                    {user?.photoURL ? (
+                    {user ? (
                         <View style={styles.avatar}>
-                            <Image style={{width:'90%', height:'90%'}} source={{uri: user.photoURL}} resizeMode='contain' alt='avatar'/>
+                            <Text style={styles.avatarText}>
+                                {user.displayName.charAt(0)}
+                            </Text>
                         </View>
                     ):(
-                        <View style={styles.avatar}>
+                        <View style={styles.avatarImage}>
                             <Image style={{width:'90%', height:'90%'}} source={require('../../assets/images/app-images/user.png')} resizeMode='contain' alt='avatar'/>
                         </View>
                     )}
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
         flexDirection:'row-reverse',
         alignItems:'center',
     },
-    avatar:{
+    avatarImage:{
         width: wp(12),
         height: wp(12),
         borderRadius: 50,
@@ -79,5 +81,27 @@ const styles = StyleSheet.create({
         fontSize: hp(1.4),
         fontWeight: '400',
         color: themes.colors.textGray
+    },
+    avatar:{
+        width: wp(11),
+        height: wp(11),
+        backgroundColor: '#000',
+        borderRadius: 50,
+        alignItems:'center',
+        justifyContent:'center',
+        shadowColor:'#000',
+        shadowRadius: 1,
+        shadowOffset: {
+            width: 0,
+            height:1,
+        },
+        shadowOpacity: 0.5,
+        elevation:6,
+    },
+    avatarText:{
+        fontSize: wp(5),
+        textTransform:'capitalize',
+        fontWeight:'700',
+        color: themes.colors.textLight
     },
 })

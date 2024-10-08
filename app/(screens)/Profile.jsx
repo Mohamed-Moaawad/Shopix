@@ -1,4 +1,4 @@
-import { ActivityIndicator, Alert, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, Alert, Platform, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 // react-native-responsive-screen
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
@@ -7,9 +7,11 @@ import { useRouter } from 'expo-router';
 
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../../firebase/config';
+import { auth, db } from '../../firebase/config';
 import Moment from 'react-moment';
 import { signOut } from '@firebase/auth';
+import { useDocument } from 'react-firebase-hooks/firestore';
+import { doc } from '@firebase/firestore';
 
 
 
@@ -18,58 +20,55 @@ const Profile = () => {
 
     const [user, loading , error] = useAuthState(auth)
 
-    const [loader, setLoader] = useState(false)
-
+    const [data, loadingData, errorData] = useDocument(doc(db, 'Users', `${user?.uid}`))
+    
     const logOut = async()=>{
         try{
-            setLoader(true)
-
             await signOut(auth)
 
-            setLoader(false)
-
             router.replace('Home')
-
+            
         }catch(err){
             Alert.alert('ERROR :', err)
             
         }
     }
 
-    if(!user && !loading){
-        router.replace('Login')
-    }
+    
 
     if(user && !loading){
         return (
-            <View style={styles.container}>
+            <>
+            <StatusBar barStyle={'light-content'} />
+                <View style={styles.container}>
 
                     {/* start head */}
                     <View style={styles.head}>
                         <TouchableOpacity style={styles.backBTN} onPress={()=> router.back()}>
                             <Ionicons name="arrow-back" size={25} color={themes.colors.textDark} />
                         </TouchableOpacity>
-    
+
                         <Text style={styles.headText}>my Profile</Text>
 
                         <TouchableOpacity style={styles.logOutBTN} onPress={logOut}>
-                            {loader ? (
-                                <ActivityIndicator size={'small'} color={themes.colors.textLight} />
-                            ):(
+                            
                                 <Ionicons name="log-out-outline" size={25} color={themes.colors.textLight} />
-                            )}
+                            
                         </TouchableOpacity>
                     </View>
                     {/* end head */}
-    
+
                     <View style={styles.profileBox}>
-                        
+
                         <View style={styles.avatarBox}>
                             <View style={styles.avatar}>
                                 <Text style={styles.avatarText}>
                                     {user.displayName.charAt(0)}
                                 </Text>
                             </View>
+                                {data?.data()?.type === "admin" && (
+                                    <Text style={styles.admin}>Admin</Text>
+                                )}
                         </View>
 
                         <View style={styles.informationUser}>
@@ -100,9 +99,10 @@ const Profile = () => {
                                 </Moment>
                             </View>
                         </View>
-    
+
                     </View>
-            </View>
+                </View>
+            </>
         )
     }
 }
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     avatar:{
         width: wp(20),
         height: wp(20),
-        backgroundColor: '#228B22',
+        backgroundColor: '#000',
         borderRadius: 50,
         alignItems:'center',
         justifyContent:'center',
@@ -189,6 +189,16 @@ const styles = StyleSheet.create({
         textTransform:'capitalize',
         fontWeight:'700',
         color: themes.colors.textLight
+    },
+    admin:{
+        fontSize: wp(4),
+        textTransform:'capitalize',
+        fontWeight:'700',
+        color: themes.colors.textLight,
+        backgroundColor: '#018749',
+        marginTop: hp(1),
+        padding: 2
+
     },
     informationUser:{
         width: '100%',
