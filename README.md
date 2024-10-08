@@ -57,6 +57,6 @@ Join our community of developers creating universal apps.
 
 
 
-<a href="https://expo.dev/accounts/mohamed_moawad/projects/Shopix/builds/b2bc12ac-5322-4473-b889-a4e0c02d6a15" width="100px" height="100px" target="_blank">
-   <img src="https://cdn.icon-icons.com/icons2/2415/PNG/512/android_original_logo_icon_146653.png" />
+<a href="https://expo.dev/accounts/mohamed_moawad/projects/Shopix/builds/b2bc12ac-5322-4473-b889-a4e0c02d6a15" target="_blank">
+   <img src="https://cdn.icon-icons.com/icons2/2415/PNG/512/android_original_logo_icon_146653.png"  width="100px" />
 </a>
