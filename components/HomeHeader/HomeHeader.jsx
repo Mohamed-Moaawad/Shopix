@@ -22,7 +22,7 @@ const HomeHeader = () => {
                     {user ? (
                         <View style={styles.avatar}>
                             <Text style={styles.avatarText}>
-                                {user.displayName.charAt(0)}
+                                {user?.displayName?.charAt(0)}
                             </Text>
                         </View>
                     ):(

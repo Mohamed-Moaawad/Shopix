@@ -1,4 +1,4 @@
-import { View, Text, Button, StyleSheet, Platform, Image } from 'react-native'
+import { View, StyleSheet, Platform, Image } from 'react-native'
 import React, { useEffect } from 'react'
 import { useRouter } from 'expo-router'
 // react-native-responsive-screen
@@ -9,9 +9,11 @@ const index = () => {
     const router = useRouter()
 
     useEffect(()=>{
+
         setTimeout(()=>{
             router.replace('Welcome')
         },2000)
+
     },[])
 
     return (

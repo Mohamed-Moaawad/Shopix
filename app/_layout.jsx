@@ -1,8 +1,14 @@
-import { View, Text, Platform } from 'react-native'
-import React from 'react'
+import { View, Text, Platform, I18nManager } from 'react-native'
+import React, { useEffect } from 'react'
 import { Stack } from 'expo-router'
 
 const _layout = () => {
+    
+    useEffect(()=>{
+        I18nManager.forceRTL(false)
+        I18nManager.allowRTL(false)
+    },[])
+
     return (
         <Stack screenOptions={{headerShown: false}}>
             <Stack.Screen 
